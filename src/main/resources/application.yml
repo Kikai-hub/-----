@@ -1,0 +1,32 @@
+server:
+  port: 8080
+
+spring:
+  application:
+    name: cloud-service
+  datasource:
+    url: ${DB_URL:jdbc:postgresql://localhost:5432/cloud}
+    username: ${DB_USER:cloud}
+    password: ${DB_PASSWORD:cloud}
+  jpa:
+    hibernate:
+      ddl-auto: update
+    open-in-view: false
+  servlet:
+    multipart:
+      max-file-size: 100MB
+      max-request-size: 100MB
+
+app:
+  storage-dir: ${STORAGE_DIR:./storage}
+  allowed-origins:
+    - http://localhost:8081
+    - http://localhost:8080
+    - http://localhost:3000
+  token-ttl: ${TOKEN_TTL:8h}
+  max-login-attempts: 5
+  lock-duration: 1m
+  # демо-пользователь; в реальной эксплуатации задайте свои значения через переменные окружения
+  users:
+    - login: ${APP_USER:user}
+      password: ${APP_PASSWORD:password}

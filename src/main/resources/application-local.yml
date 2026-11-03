@@ -1,0 +1,6 @@
+# Профиль для быстрого запуска без PostgreSQL: java -jar ... --spring.profiles.active=local
+spring:
+  datasource:
+    url: jdbc:h2:mem:cloud;DB_CLOSE_DELAY=-1
+    username: sa
+    password: ""
